@@ -7,10 +7,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+import { USER_AVATAR,BG_IMAGE_URL } from "../utils/constants";
 
 const Login = () => {
-  const nagivate = useNavigate();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -40,19 +39,16 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL:
-              "https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               // Profile updated!
-              nagivate("/browse");
               // ...
             })
             .catch((error) => {
               // An error occurred
               // ...
             });
-          console.log(user);
 
           // ...
         })
@@ -72,8 +68,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          nagivate("/browse");
           // ...
         })
         .catch((error) => {
@@ -93,13 +87,13 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/51c1d7f7-3179-4a55-93d9-704722898999/be90e543-c951-40d0-9ef5-e067f3e33d16/IN-en-20240610-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={BG_IMAGE_URL}
           alt="background-img"
-          className="w-full h-full object-cover"
+          className="h-screen object-cover"
         />
       </div>
       <form
-        className="w-3/12 absolute p-12 mx-auto left-0 right-0 my-24 bg-black rounded-md text-white bg-opacity-80"
+        className="w-11/12 md:w-3/12 absolute p-12 mx-auto left-0 right-0 my-24 bg-black rounded-lg text-white bg-opacity-80"
         onSubmit={(e) => e.preventDefault()}
       >
         <h1 className="text-3xl font-bold py-4">
