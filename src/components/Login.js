@@ -89,7 +89,7 @@ const Login = () => {
         <img
           src={BG_IMAGE_URL}
           alt="background-img"
-          className="h-screen object-cover"
+          className="h-screen object-cover md:w-screen"
         />
       </div>
       <form
@@ -121,12 +121,12 @@ const Login = () => {
         />
         <p className="text-red-600 font-bold text-lg p-2">{errorMessage}</p>
         <button
-          className="bg-red-600 p-2 my-4 w-full rounded-md"
+          className="bg-red-600 p-2 my-4 w-full rounded-md hover:bg-opacity-90"
           onClick={handleButtonClick}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p className="font-bold cursor-pointer" onClick={toggleSignInForm}>
+        <p className="font-bold cursor-pointer hover:text-gray-300" onClick={toggleSignInForm}>
           {isSignInForm
             ? "New to Netfilx? Sign up now."
             : "Already a user? Log in now."}
